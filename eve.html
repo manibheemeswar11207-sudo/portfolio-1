@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Eve Works — Short Films & Videos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#000000;
+      --accent:#1E90FF;
+      --text:#ffffff;
+      --muted: #bfbfbf;
+      --max-width:1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      background:var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.4;
+    }
+    a{color:var(--accent);text-decoration:none}
+    .container{max-width:var(--max-width);margin:0 auto;padding:20px}
+
+    /* Header */
+    header{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:46px;height:46px;border-radius:8px;border:2px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;font-weight:700;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent)}
+    .brand h1{margin:0;font-size:1.1rem;letter-spacing:0.6px}
+    nav{display:flex;gap:12px}
+    .nav-link{padding:8px 12px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.03);cursor:pointer}
+    .nav-link:hover{background:rgba(30,144,255,0.06)}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr;gap:20px;align-items:center;padding:28px 0}
+    .hero h2{margin:0;font-size:1.6rem}
+    .sub{color:var(--muted);margin-top:8px}
+    .cta{margin-top:8px}
+    .btn{background:var(--accent);color:#000;padding:10px 16px;border-radius:10px;font-weight:600;border:none;cursor:pointer}
+    .btn:focus{outline:3px solid rgba(30,144,255,0.25)}
+
+    /* Sections */
+    section{padding:28px 0;border-top:1px solid rgba(255,255,255,0.03)}
+    section h3{margin:0 0 14px 0}
+
+    /* Videos grid */
+    .videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+    .video-wrap{background:rgba(255,255,255,0.02);padding:8px;border-radius:10px}
+    .video-wrap iframe{width:100%;height:200px;border-radius:8px}
+
+    /* Instagram */
+    .insta-card{display:flex;flex-direction:column;gap:12px;background:rgba(255,255,255,0.02);padding:16px;border-radius:12px}
+    .insta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+    .insta-grid img{width:100%;height:80px;object-fit:cover;border-radius:6px}
+
+    /* QR */
+    .qr{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+    .qr-box{width:180px;height:180px;background:#fff;border-radius:12px;padding:12px;display:flex;align-items:center;justify-content:center}
+    .qr-instructions{color:var(--muted);max-width:540px}
+
+    /* Message form */
+    form{display:grid;gap:12px;max-width:720px}
+    input[type=text], textarea, input[type=file]{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.04);padding:10px;border-radius:8px;color:var(--text)}
+    textarea{min-height:120px;resize:vertical}
+    .small{font-size:0.9rem;color:var(--muted)}
+
+    /* Footer */
+    footer{padding:18px 0;color:var(--muted);font-size:0.9rem;display:flex;justify-content:space-between;align-items:center}
+
+    /* Responsive tweaks */
+    @media(min-width:860px){
+      .hero{grid-template-columns:1fr 380px}
+      .hero .card{background:rgba(255,255,255,0.02);padding:18px;border-radius:12px}
+      .video-wrap iframe{height:220px}
+    }
+
+    @media(max-width:420px){
+      .logo{width:40px;height:40px}
+      .qr-box{width:150px;height:150px}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true">EW</div>
+        <div>
+          <h1>Eve Works</h1>
+          <div class="small">Short films & videos</div>
+        </div>
+      </div>
+      <nav aria-label="Primary">
+        <a class="nav-link" href="#videos">YouTube</a>
+        <a class="nav-link" href="#instagram">Instagram</a>
+        <a class="nav-link" href="#qr">QR Code</a>
+        <a class="nav-link" href="#message">Message Us</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <h2>Welcome to Eve Works — Your hub for short films & creative videos</h2>
+          <p class="sub">Follow Eve tagginchukovali on YouTube and @eve_tagginchukovali on Instagram. No login required — watch, share, and connect.</p>
+          <div class="cta">
+            <button id="openChannel" class="btn" onclick="openYouTube()">Watch on YouTube</button>
+          </div>
+        </div>
+        <div class="card" aria-hidden="false">
+          <p style="margin:0;font-weight:600">Latest</p>
+          <p class="small">Easily browse recent videos and join the community.</p>
+        </div>
+      </section>
+
+      <!-- YouTube section -->
+      <section id="videos">
+        <h3>🎬 Latest Videos</h3>
+        <p class="small">Embedded from your YouTube channel: <strong>Eve tagginchukovali</strong></p>
+        <div class="videos" id="videosGrid">
+          <!-- The script will populate several iframes that point to the channel's uploads playlist as a best-effort embed. -->
+        </div>
+      </section>
+
+      <!-- Instagram section -->
+      <section id="instagram">
+        <h3>📸 Our Instagram</h3>
+        <div class="insta-card">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <div>
+              <strong>@eve_tagginchukovali</strong>
+              <div class="small">Short film stills, behind-the-scenes, and announcements.</div>
+            </div>
+            <div>
+              <a class="btn" href="https://www.instagram.com/eve_tagginchukovali?igsh=MW90MDNycGQzaTFhNw==" target="_blank" rel="noopener">Open Instagram</a>
+            </div>
+          </div>
+
+          <!-- Lightweight placeholder grid for accessibility. Replace with an official embed or service when you want a live feed. -->
+          <div class="insta-grid" id="instaGrid">
+            <!-- JS will create placeholder squares linking to Instagram -->
+          </div>
+          <p class="small">Tip: For a live Instagram feed on the site, you can use a third-party widget (LightWidget, SnapWidget) or Instagram's Basic Display API. Need help setting that up — I can configure it for you.</p>
+        </div>
+      </section>
+
+      <!-- QR code section -->
+      <section id="qr">
+        <h3>📲 Scan & Subscribe</h3>
+        <div class="qr">
+          <div class="qr-box" id="qrBox" aria-hidden="false"></div>
+          <div class="qr-instructions">
+            <p><strong>Scan with your phone camera</strong> to open the YouTube channel and subscribe.</p>
+            <p class="small">Channel: <strong>Eve tagginchukovali</strong></p>
+            <p class="small">Or click the button: <a id="channelLink" href="#">Open YouTube Channel</a></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Messaging section -->
+      <section id="message">
+        <h3>💬 Send Us a Message</h3>
+        <p class="small">No login required. Use the form below to send a message. Files attached will not be stored on this static site unless you configure a backend or a form service.</p>
+
+        <form id="contactForm" method="POST" action="https://formspree.io/f/your-form-id" enctype="multipart/form-data">
+          <label for="name">Name (optional)</label>
+          <input id="name" name="name" type="text" placeholder="Your name" />
+
+          <label for="messageText">Message</label>
+          <textarea id="messageText" name="message" placeholder="Write a short message..." required></textarea>
+
+          <label for="file">Attach image or short video (optional)</label>
+          <input id="file" name="attachment" type="file" accept="image/*,video/*" />
+
+          <div style="display:flex;gap:12px;align-items:center">
+            <button type="submit" class="btn">Send Message</button>
+            <button type="button" id="mailFallback" class="nav-link">Send by Email</button>
+          </div>
+          <p class="small">Form action currently points to a placeholder Formspree URL. Replace <code>https://formspree.io/f/your-form-id</code> with your Formspree endpoint, or configure your own backend to receive messages.</p>
+        </form>
+      </section>
+
+    </main>
+
+    <footer>
+      <div>© 2025 Eve Works</div>
+      <div style="display:flex;gap:10px;align-items:center">
+        <a href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="YouTube">YouTube</a>
+        <a href="https://www.instagram.com/eve_tagginchukovali?igsh=MW90MDNycGQzaTFhNw==" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
+      </div>
+    </footer>
+  </div>
+
+  <!-- QRCode generator (minimal, no external network required) -->
+  <script>
+    // Config values from the user
+    const YOUTUBE_CHANNEL_NAME = 'Eve tagginchukovali';
+    const INSTAGRAM_URL = 'https://www.instagram.com/eve_tagginchukovali?igsh=MW90MDNycGQzaTFhNw==';
+    const YOUTUBE_URL = 'https://www.youtube.com/results?search_query=' + encodeURIComponent('Eve tagginchukovali');
+
+    // Create a simple QR code using Google Charts API as a fallback (no dependency)
+    function renderQRCode(url){
+      const box = document.getElementById('qrBox');
+      const encoded = encodeURIComponent(url);
+      const img = document.createElement('img');
+      img.alt = 'QR code linking to YouTube channel';
+      img.src = `https://chart.googleapis.com/chart?cht=qr&chs=300x300&chl=${encoded}&chld=L|1`;
+      img.style.width='100%';img.style.height='100%';img.style.objectFit='contain';img.style.borderRadius='8px';
+      box.appendChild(img);
+      document.getElementById('channelLink').href = url;
+      document.getElementById('openChannel').addEventListener('click', ()=> window.open(url,'_blank'));
+    }
+
+    // Populate YouTube iframe cards — best-effort: try user uploads playlist embed and also provide link.
+    function populateVideos(){
+      const grid = document.getElementById('videosGrid');
+      // We'll create 4 embeds that attempt to show the channel uploads playlist (best-effort).
+      // Note: some browsers / YouTube policies may block certain playlist embeds; this is a graceful approach.
+      const playlistParam = encodeURIComponent(YOUTUBE_CHANNEL_NAME.replace(/\s+/g,'')).replace(/%20/g,'');
+      for(let i=0;i<4;i++){
+        const wrap = document.createElement('div');wrap.className='video-wrap';
+        const iframe = document.createElement('iframe');
+        iframe.setAttribute('title', `Eve Works video ${i+1}`);
+        iframe.setAttribute('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+        iframe.setAttribute('allowfullscreen','');
+        // Attempt to use user_uploads list type—this may or may not work depending on how YouTube interprets the name.
+        iframe.src = `https://www.youtube.com/embed?listType=user_uploads&list=${encodeURIComponent(YOUTUBE_CHANNEL_NAME)}`;
+        wrap.appendChild(iframe);
+        grid.appendChild(wrap);
+      }
+    }
+
+    // Create a lightweight Instagram placeholder grid linking to the profile
+    function populateInstaPlaceholders(){
+      const grid = document.getElementById('instaGrid');
+      for(let i=0;i<6;i++){
+        const a = document.createElement('a');
+        a.href = INSTAGRAM_URL; a.target='_blank'; a.rel='noopener';
+        const img = document.createElement('img');
+        img.alt = 'Instagram preview image';
+        // Use a neutral placeholder inline SVG to avoid external deps
+        img.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600"><rect width="100%" height="100%" fill="#111111"/><text x="50%" y="50%" fill="#888888" font-size="28" text-anchor="middle" alignment-baseline="middle">@eve_tagginchukovali</text></svg>`);
+        a.appendChild(img);
+        grid.appendChild(a);
+      }
+    }
+
+    // Mail fallback for the form (client-side)
+    document.getElementById('mailFallback').addEventListener('click', ()=>{
+      const name = document.getElementById('name').value || 'Anonymous';
+      const message = document.getElementById('messageText').value || '';
+      const subject = encodeURIComponent('Message from Eve Works website — ' + name);
+      const body = encodeURIComponent(message + '\n\nSent from Eve Works community hub');
+      // Replace the email below with the site owner's email address
+      window.location.href = `mailto:youremail@example.com?subject=${subject}&body=${body}`;
+    });
+
+    // On submit, if the action is still the placeholder, prevent actual submission and show a friendly message
+    document.getElementById('contactForm').addEventListener('submit',(e)=>{
+      const form = e.target;
+      if(form.action.includes('your-form-id')){
+        e.preventDefault();
+        alert('Form endpoint is currently a placeholder. Replace the form action with your Formspree endpoint or add a backend to receive messages. Meanwhile, use the "Send by Email" button.');
+      }
+    });
+
+    // Init
+    renderQRCode(YOUTUBE_URL);
+    populateVideos();
+    populateInstaPlaceholders();
+  </script>
+</body>
+</html>
